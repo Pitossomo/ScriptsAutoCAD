@@ -1,0 +1,28 @@
+; Erase last drawn entity
+(defun c:EraseLast()
+	(initget "Y N")
+	(setq ans (getkword "\nDelete last object [Y/N]? "))
+	(if (= ans "Y")
+		(progn
+			(command "erase" (entlast) "")
+			(prompt "\nLast object deleted.")
+		)
+		(prompt "\nLast object was spared.")
+	)
+	(princ)
+)
+
+; Jo-Ken-Po!
+(defun c:Jokenpo()
+	(initget "Rock Scissors Paper")
+	(setq ans (getkword "\nChoose one weapon [Rock/Scissors/Paper]: "))
+	(prompt "\nAI choose Paper.")
+	(if (= ans "Rock")
+		(prompt " You lose!")
+		(if (= ans "Scissors")
+			(prompt " You win!")
+			(prompt " It's a draw.")
+		)
+	)
+	(princ)
+)
